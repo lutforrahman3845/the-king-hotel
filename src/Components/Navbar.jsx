@@ -21,8 +21,8 @@ const Navbar = () => {
           className={({ isActive }) =>
             ` px-3 py-2 rounded-lg font-semibold ${
               isActive
-                ? "text-base text-white bg-primary/40 "
-                : "text-gray-300 hover:bg-gray-900 hover:text-white text-base "
+                ? "text-base text-black bg-primary/50 "
+                : "text-gray-800 hover:underline text-base "
             }`
           }
           to="/"
@@ -35,8 +35,8 @@ const Navbar = () => {
           className={({ isActive }) =>
             `px-3 py-2 rounded-lg font-semibold ${
               isActive
-                ? "text-base text-white bg-primary/40 "
-                : "text-gray-300 hover:bg-gray-900 hover:text-white text-base "
+                ? "text-base text-black bg-primary/50 "
+                : "text-gray-800 hover:underline  text-base "
             }`
           }
           to="/rooms"
@@ -51,8 +51,8 @@ const Navbar = () => {
             className={({ isActive }) =>
               ` px-3 py-2 rounded-lg font-semibold ${
                 isActive
-                  ? "text-base text-white bg-primary/40 "
-                  : "text-gray-300 hover:bg-gray-900 hover:text-white text-base "
+                  ? "text-base text-black bg-primary/50 "
+                  : "text-gray-800 hover:underline  text-base "
               }`
             }
             to="/my_bookings"
@@ -65,13 +65,13 @@ const Navbar = () => {
   );
 
   return (
-    <Disclosure as="nav" className=" bg-gray-800">
+    <Disclosure as="nav" className="bg-primary/20">
       <div className=" px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="flex  items-center justify-center sm:items-center sm:justify-start">
             <Link to={"/"} className="flex shrink-0 items-center">
               <img alt="Your Company" src={logo} className="h-8 w-auto" />
-              <h1 className="text-white font-bold text-xl md:text-2xl ml-3 ">
+              <h1 className="text-gray-900 font-bold text-xl md:text-2xl ml-3 ">
                 King Hotel
               </h1>
             </Link>

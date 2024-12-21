@@ -5,6 +5,7 @@ import Root from "../Pages/Root";
 import Error from "../Error";
 import SingIn from "../Pages/SingIn";
 import SingUp from "../Pages/SingUp";
+import Home from "../Pages/Home";
 
   const router = createBrowserRouter([
     {
@@ -19,6 +20,10 @@ import SingUp from "../Pages/SingUp";
         {
           path: "/singup",
           element: <SingUp></SingUp>
+        },
+        {
+          path: "/",
+          element: <Home></Home>
         }
 
       ]
