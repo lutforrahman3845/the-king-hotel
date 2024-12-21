@@ -1,5 +1,6 @@
 import about1 from "../assets/about2.jpg";
 import about2 from "../assets/about1.jpg";
+import { motion } from "motion/react";
 const About = () => {
   return (
     <section className="py-8 md:py-14 lg:py-16 xl:py-20 px-2 overflow-x-hidden">
@@ -8,7 +9,12 @@ const About = () => {
       </h1>
       <div className="container mx-auto mt-6  md:mt-10">
         <div className="sm:mx-4 flex flex-col md:flex-row items-center gap-8">
-          <div className="w-full md:w-1/2 relative">
+          <motion.div
+            whileInView={{ x: [-500, 0] }}
+            transition={{ duration: 2, ease: "linear" }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="w-full md:w-1/2 relative"
+          >
             <div>
               <img className="rounded-sm w-11/12" src={about1} alt="" />
               <img
@@ -17,7 +23,7 @@ const About = () => {
                 alt=""
               />
             </div>
-          </div>
+          </motion.div>
           <div className=" w-full md:w-1/2">
             <h4 className="text-primary font-medium lg:mb-4 mb-3">
               Welcome To King Hotel
