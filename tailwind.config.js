@@ -6,7 +6,11 @@ export default {
       colors: {
         primary: "#B89146",
         secondary:"#5B2E01"
+      },
+      fontFamily: {
+        'cinzel': ["Cinzel", "serif"],
       }
+      
     },
   },
   plugins: [require("daisyui")],
