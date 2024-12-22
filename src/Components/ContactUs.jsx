@@ -3,14 +3,14 @@ const ContactUs = () => {
       <section className="bg-primary/10 py-12 px-2 lg:px-20">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-xl  lg:text-2xl  xl:text-3xl font-cinzel font-semibold text-center  mb-6">
-            Contact Us
+            Contact with us
           </h2>
         <p className="text-center text-gray-600 mb-12 max-w-xl mx-auto">
             Have questions or need assistance? We're here to help! <span className="hidden sm:inline">Reach out to us
             using the form below, and we'll get back to you as soon as possible.</span>
           </p>
   
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 ">
             <div className="space-y-6">
               <div className="flex items-center space-x-4">
                 <div className="text-gray-800 text-2xl">
