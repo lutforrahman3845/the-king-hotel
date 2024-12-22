@@ -1,6 +1,7 @@
 import About from "../Components/About";
 import Bannar from "../Components/Bannar";
 import ContactUs from "../Components/ContactUs";
+import FeaturedRooms from "../Components/FeaturedRooms";
 import OurLocation from "../Components/OurLocation";
 
 const Home = () => {
@@ -8,8 +9,9 @@ const Home = () => {
         <div>
             <Bannar></Bannar>
             <About></About>
-            <ContactUs></ContactUs>
+            <FeaturedRooms></FeaturedRooms>
             <OurLocation></OurLocation>
+            <ContactUs></ContactUs>
         </div>
     );
 };
