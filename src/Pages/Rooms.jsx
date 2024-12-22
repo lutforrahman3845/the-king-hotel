@@ -7,19 +7,20 @@ import { useQuery } from "@tanstack/react-query";
 const Rooms = () => {
   const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [sort, setSort] = useState("");
   const itemsPerPage = 8;
- 
-    const { data: rooms, isLoading } = useQuery({
-      queryKey: ["allrooms" ,currentPage],
-      queryFn: async () => {
-        const { data } = await axios.get(
-          `${
-            import.meta.env.VITE_serverUrl
-          }/rooms?skip=${currentPage}&limit=${itemsPerPage}`
-        );
-        return data;
-      },
-    });
+
+  const { data: rooms, isLoading } = useQuery({
+    queryKey: ["allrooms", currentPage, sort],
+    queryFn: async () => {
+      const { data } = await axios.get(
+        `${
+          import.meta.env.VITE_serverUrl
+        }/rooms?skip=${currentPage}&limit=${itemsPerPage}&sort=${sort}`
+      );
+      return data;
+    },
+  });
 
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_serverUrl}/rooms_count`).then((res) => {
@@ -32,13 +33,14 @@ const Rooms = () => {
   const handlePaginationButton = (value) => {
     setCurrentPage(value);
   };
+  console.log(sort)
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
   return (
     <div className="py-6 md:py-10 px-3">
       <h1 className="text-xl  lg:text-2xl  xl:text-3xl text-center font-cinzel font-semibold">
         All Rooms
       </h1>
-      <p className="text-center text-gray-600 mb-12 max-w-4xl mx-auto">
+      <p className="text-center text-gray-600 mb-6 max-w-4xl mx-auto">
         Experience luxurious comfort and elegant design in our meticulously
         appointed rooms, perfect for relaxation and rejuvenation.{" "}
         <span className="hidden lg:inline">
@@ -47,7 +49,22 @@ const Rooms = () => {
           views to ensure a memorable stay.
         </span>
       </p>
-
+      <div className="py-6 flex items-center justify-end">   
+        <select
+          onChange={(e) => {
+            setSort(e.target.value);
+            setCurrentPage(1);
+          }}
+          value={sort}
+          name="sort"
+          id="sort"
+          className="border-2 border-indigo-600 p-3 rounded-md"
+        >
+          <option value="">Sort By Price</option>
+          <option value="dsc">Descending Order</option>
+          <option value="asc">Ascending Order</option>
+        </select>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6">
         {rooms.map((room) => (
           <RoomCard key={room._id} room={room}></RoomCard>
