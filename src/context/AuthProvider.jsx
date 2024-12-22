@@ -42,7 +42,7 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser?.email) {
         setUser(currentUser);
-        const { data } = await axios.post(
+        await axios.post(
           `${import.meta.env.VITE_serverUrl}/jwt`,
           {
             email: currentUser?.email,
@@ -51,14 +51,11 @@ const AuthProvider = ({ children }) => {
             withCredentials: true,
           }
         );
-        console.log(data);
       } else {
         setUser(currentUser);
-        const { data } = await axios.get(
-          `${import.meta.env.VITE_serverUrl}/logout`,
-          { withCredentials: true,}
-        );
-        console.log(data)
+        await axios.get(`${import.meta.env.VITE_serverUrl}/logout`, {
+          withCredentials: true,
+        });
       }
       setLoading(false);
     });

@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "./LoadingSpinner";
 
 const FeaturedRooms = () => {
-  const { data:rooms, isLoading } = useQuery({
+  const { data: rooms, isLoading } = useQuery({
     queryKey: ["rooms"],
     queryFn: async () => {
       const { data } = await axios.get(
@@ -13,8 +13,6 @@ const FeaturedRooms = () => {
       return data;
     },
   });
-
-
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
   return (
     <div className="py-6 md:py-10 px-3">
@@ -27,7 +25,7 @@ const FeaturedRooms = () => {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {rooms.slice(0,6)?.map((room) => (
+        {rooms.slice(0, 6)?.map((room) => (
           <RoomCard key={room._id} room={room}></RoomCard>
         ))}
       </div>
