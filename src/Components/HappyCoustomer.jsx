@@ -19,19 +19,19 @@ const HappyCoustomer = () => {
           >
             <div className="text-center">
               <p className="text-lg text-primary font-semibold">
-                <CountUp end={18000} duration={5}></CountUp>+
+                <CountUp end={18000} duration={3} enableScrollSpy></CountUp>+
               </p>
               <h3 className="text-xl font-semibold">Happy Customers</h3>
             </div>
             <div className="text-center">
               <p className="text-lg text-primary font-semibold">
-                <CountUp end={99} duration={8}></CountUp>+
+                <CountUp end={99} duration={3} enableScrollSpy></CountUp>+
               </p>
               <h3 className="text-xl font-semibold"> Positive Review</h3>
             </div>
             <div className="text-center">
               <p className="text-lg text-primary font-semibold">
-                <CountUp end={25} duration={15}></CountUp>+
+                <CountUp end={26} duration={3} enableScrollSpy></CountUp>+
               </p>
               <h3 className="text-xl font-semibold"> Year of Experiences </h3>
             </div>
