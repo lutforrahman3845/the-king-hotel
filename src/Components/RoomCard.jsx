@@ -1,7 +1,9 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link, useNavigate } from "react-router-dom";
 const RoomCard = ({ room }) => {
+  const navigate = useNavigate();
   const settings = {
     dots: true,
     infinite: true,
@@ -10,9 +12,12 @@ const RoomCard = ({ room }) => {
     slidesToScroll: 1,
     arrows: true,
   };
+  const handleClick = () => {
+    navigate(`/room_details/${room._id}`);
+  };
 
   return (
-    <div className="shadow-lg rounded-lg overflow-hidden bg-white">
+    <div className="shadow-lg rounded-lg overflow-hidden bg-white border ">
       <div className="slider-container">
         <Slider {...settings}>
           {room?.images.map((image, index) => (
@@ -25,7 +30,7 @@ const RoomCard = ({ room }) => {
           ))}
         </Slider>
       </div>
-      <div className="p-4">
+      <div onClick={handleClick} className="p-4  cursor-pointer">
         <h3 className="text-lg font-bold text-gray-800">{room?.title}</h3>
         <p className="text-gray-600 text-sm mt-2">{room?.description}</p>
 
@@ -47,6 +52,11 @@ const RoomCard = ({ room }) => {
             : "No reviews yet"}
           )
         </div>
+        <Link to={`/room_details/${room._id}`}>
+          <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded mt-4">
+            Book Now
+          </button>
+        </Link>
       </div>
     </div>
   );
