@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useState } from "react";
 import LoadingSpinner from "../Components/LoadingSpinner";
 import Slider from "react-slick";
@@ -11,6 +11,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../Context/AuthProvider";
 import { toast } from "react-toastify";
 const RoomDetails = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const queryClient = useQueryClient();
   const [selectedStartDate, setSelectedStartDate] = useState(null);
@@ -49,6 +50,10 @@ const RoomDetails = () => {
         progress: undefined,
         theme: "light",
       });
+      navigate("/my_bookings");
+    },
+    onError: (error) => {
+      setError(error.response.data.message);
     },
   });
 
@@ -79,6 +84,8 @@ const RoomDetails = () => {
       roomId: id,
       startDate: selectedStartDate,
       endDate: selectedEndDate,
+      price: room?.price,
+      roomTitle: room?.title,
       userEmail: user?.email,
     });
   };

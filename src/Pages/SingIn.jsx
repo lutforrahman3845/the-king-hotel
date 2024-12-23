@@ -6,7 +6,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { toast } from "react-toastify";
 
 const SingIn = () => {
-  const { singIn, setUser, singInWithGoogle, setEmail } =
+  const { singIn, setUser, singInWithGoogle } =
     useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
@@ -78,7 +78,6 @@ const SingIn = () => {
               className="input input-bordered"
               required
               name="email"
-              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="form-control">
