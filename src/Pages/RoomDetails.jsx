@@ -1,5 +1,4 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useState } from "react";
 import LoadingSpinner from "../Components/LoadingSpinner";
@@ -10,8 +9,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../Context/AuthProvider";
 import { toast } from "react-toastify";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+
 const RoomDetails = () => {
   const navigate = useNavigate();
+  const axiosSecure= useAxiosSecure();
   const { id } = useParams();
   const queryClient = useQueryClient();
   const [selectedStartDate, setSelectedStartDate] = useState(null);
@@ -22,8 +24,8 @@ const RoomDetails = () => {
   const { data: room, isLoading } = useQuery({
     queryKey: ["roomDetails", id],
     queryFn: async () => {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_serverUrl}/room_details/${id}`
+      const { data } = await axiosSecure.get(
+        `/room_details/${id}`
       );
       return data;
     },
@@ -31,8 +33,8 @@ const RoomDetails = () => {
 
   const { isPending, mutateAsync } = useMutation({
     mutationFn: async (bookingData) => {
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_serverUrl}/book_room`,
+      const { data } = await axiosSecure.post(
+        `/book_room`,
         bookingData
       );
       return data;
@@ -70,7 +72,7 @@ const RoomDetails = () => {
     const durationInMilliseconds = end - start;
     const durationInDays = durationInMilliseconds / (1000 * 60 * 60 * 24);
 
-    if (selectedEndDate && durationInDays < 0) {
+    if (selectedEndDate && durationInDays <= 0) {
       return setError("End date must be after the start date.");
     }
 
@@ -78,7 +80,7 @@ const RoomDetails = () => {
     if (selectedEndDate && durationInDays > maxDuration) {
       return setError(`You can only book up to ${maxDuration} days`);
     }
-
+     const days = durationInDays <= 0 ? 1 : durationInDays;
     // Proceed with booking logic
     mutateAsync({
       roomId: id,
@@ -86,7 +88,9 @@ const RoomDetails = () => {
       endDate: selectedEndDate,
       price: room?.price,
       roomTitle: room?.title,
+      roomImage: room?.images[0],
       userEmail: user?.email,
+      days,
     });
   };
 
