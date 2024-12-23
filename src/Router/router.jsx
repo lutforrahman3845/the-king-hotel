@@ -7,6 +7,8 @@ import SingIn from "../Pages/SingIn";
 import SingUp from "../Pages/SingUp";
 import Home from "../Pages/Home";
 import Rooms from "../Pages/Rooms";
+import PrivateRoute from "./PrivateRoute";
+import RoomDetails from "../Pages/RoomDetails";
 
   const router = createBrowserRouter([
     {
@@ -29,6 +31,10 @@ import Rooms from "../Pages/Rooms";
         {
           path: "/rooms",
           element: <Rooms></Rooms>
+        },
+        {
+          path:"/room_details/:id",
+          element: <PrivateRoute><RoomDetails></RoomDetails></PrivateRoute>
         }
 
       ]
