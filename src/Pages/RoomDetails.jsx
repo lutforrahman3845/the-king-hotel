@@ -72,7 +72,7 @@ const RoomDetails = () => {
     const durationInMilliseconds = end - start;
     const durationInDays = durationInMilliseconds / (1000 * 60 * 60 * 24);
 
-    if (selectedEndDate && durationInDays <= 0) {
+    if (selectedEndDate && durationInDays < 0) {
       return setError("End date must be after the start date.");
     }
 
