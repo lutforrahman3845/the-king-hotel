@@ -17,7 +17,6 @@ const Reviews = () => {
       return data;
     },
   });
-  console.log(reviews);
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
   return (
     <div className="py-8 md:py-14 lg:py-16 xl:py-20 px-2 overflow-x-hidden">
@@ -71,7 +70,7 @@ const Reviews = () => {
                 )}
                 <div>
                   <p className="text-lg font-semibold">{review?.userName}</p>
-                  <p>{review?.timestamp}</p>
+                  <p>{new Date(review?.timestamp).toLocaleString()}</p>
                 </div>
               </div>
               <div className="my-4 ml-10">

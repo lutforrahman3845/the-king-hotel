@@ -195,9 +195,10 @@ const RoomDetails = () => {
       {review.length <= 0 ? (
         <div className="mx-4">
           <p className="text-center text-gray-600 italic max-w-2xl mx-auto">
-            This room is waiting for its first review! Our customers love
-            sharing their experiences, and we're confident you'll have a
-            memorable stay too. Book now with confidence!
+            This room is waiting for its first review! If you want to leave a
+            review, you need to book the room first . Our customers love sharing
+            their experiences, and we're confident you'll have a memorable stay
+            too. Book now with confidence!
           </p>
         </div>
       ) : (
@@ -222,7 +223,7 @@ const RoomDetails = () => {
                 )}
                 <div>
                   <p className="text-lg font-semibold">{review?.userName}</p>
-                  <p>{review?.timestamp}</p>
+                  <p>{new Date(review?.timestamp).toLocaleString()}</p>
                 </div>
               </div>
               <div className="my-4 ml-10">

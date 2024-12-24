@@ -229,7 +229,7 @@ const MyBookings = () => {
       rooomRating,
       userName: user?.displayName,
       userPhoto: user?.photoURL,
-      timestamp: new Date().toLocaleString()
+      timestamp: new Date()
     };
     reviewRoom(reviewData);
     from.reset();
