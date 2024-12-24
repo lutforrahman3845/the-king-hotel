@@ -7,17 +7,19 @@ import OurLocation from "../Components/OurLocation";
 import Reviews from "../Components/Reviews";
 
 const Home = () => {
-    return (
-        <div>
-            <Bannar></Bannar>
-            <About></About>
-            <HappyCoustomer></HappyCoustomer>
-            <FeaturedRooms></FeaturedRooms>
-            <Reviews></Reviews>
-            <OurLocation></OurLocation>
-            <ContactUs></ContactUs>
-        </div>
-    );
+    
+  return (
+    <div>
+      <Bannar></Bannar>
+      <About></About>
+      <HappyCoustomer></HappyCoustomer>
+      <FeaturedRooms></FeaturedRooms>
+      <Reviews></Reviews>
+      <OurLocation></OurLocation>
+      <ContactUs></ContactUs>
+      
+    </div>
+  );
 };
 
 export default Home;

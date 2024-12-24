@@ -193,13 +193,13 @@ const RoomDetails = () => {
       </div>
       {/* reviews */}
       {review.length <= 0 ? (
-        <p className="text-center text-gray-600 italic max-w-2xl mx-auto">
-          <span className="mx-4">
+        <div className="mx-4">
+          <p className="text-center text-gray-600 italic max-w-2xl mx-auto">
             This room is waiting for its first review! Our customers love
             sharing their experiences, and we're confident you'll have a
             memorable stay too. Book now with confidence!
-          </span>
-        </p>
+          </p>
+        </div>
       ) : (
         <div className="px-8 md:px-14 lg:px-16 xl:px-20 overflow-x-hidden">
           <h4 className="text-2xl font-semibold text-indigo-600">Reviews</h4>
