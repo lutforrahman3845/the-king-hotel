@@ -1,8 +1,24 @@
-# React + Vite
+# Project Name
+The King Hotel
+# Purpose
+Provide a user-friendly interface for customers to easily search, select, and book hotels. The application should be able to handle multiple hotels, rooms, and bookings.Display detailed information about hotels, including room types, amenities, pricing, and reviews.
+### Live Demo
+https://the-king-hotel.web.app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Key Features
+- **Add visa**.
+- **Update visa**
+- **Delete visa** 
+- **Apply for  visa** 
+- **Filter  visa type** 
+- **Search applied visa by country name** 
+# npm packages
+- Lottie React
+- react-toastify
+- react-datepicker
+- react motion
+- react-leaflet
+- react-countup
+- react-star-rating-component
+- react-date-fns

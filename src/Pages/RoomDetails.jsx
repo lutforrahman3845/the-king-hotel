@@ -119,8 +119,6 @@ const RoomDetails = () => {
   }, []);
   const totalPages = Math.ceil(count / rewviewsPerPage);
   const pages = [...Array(totalPages).keys()].map((i) => i + 1);
-  console.log(totalPages);
-  console.log(review);
 
   const handlePaginationButton = (value) => {
     setCurrentPage(value);
