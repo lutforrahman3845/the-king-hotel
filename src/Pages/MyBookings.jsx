@@ -7,15 +7,20 @@ import { format } from "date-fns";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import DatePicker from "react-datepicker";
+import StarRatingComponent from "react-star-rating-component";
+import userIcon from "../assets/free-user-icon-3296-thumb.png";
 
 const MyBookings = () => {
   const { user } = useContext(AuthContext);
   const queryClient = useQueryClient();
   const axiosSecure = useAxiosSecure();
+  //   update booking
   const [selectedStartDate, setSelectedStartDate] = useState(null);
   const [selectedEndDate, setSelectedEndDate] = useState(null);
   const [error, setError] = useState("");
   const [roomdtls, setRoomdtls] = useState({});
+  //   review
+  const [rating, setRating] = useState(1);
   const { data: bookingRooms, isLoading } = useQuery({
     queryKey: ["myBookings"],
     queryFn: async () => {
@@ -100,8 +105,8 @@ const MyBookings = () => {
       }
     });
   };
-  // update booking
 
+  // update booking
   const { mutateAsync: updateBooking, isPending } = useMutation({
     mutationFn: async (updateData) => {
       const { data } = await axiosSecure.patch(
@@ -154,7 +159,7 @@ const MyBookings = () => {
     // Calculate duration in days
     const durationInMilliseconds = end - start;
     const durationInDays = durationInMilliseconds / (1000 * 60 * 60 * 24);
-       
+
     if (selectedEndDate && durationInDays < 0) {
       return setError("End date must be after the start date.");
     }
@@ -170,6 +175,63 @@ const MyBookings = () => {
       endDate: selectedEndDate,
       days,
     });
+  };
+
+  //   review for specific room
+  const { mutateAsync: reviewRoom } = useMutation({
+    mutationFn: async (reviewData) => {
+      const {data} = await axiosSecure.post("/review", reviewData);
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(["allrooms", "rooms"]);
+      document.getElementById("my_modal_5").close();
+      toast.success("Review give successfully", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    },
+    onError: (error) => {
+      toast.error(error.response.data.message, {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    },
+  })
+  const reviewModal = (room) => {
+    document.getElementById("my_modal_5").showModal();
+    setRoomdtls(room);
+  };
+  const onStarClick = (nextValue) => {
+    setRating(nextValue);
+  };
+  const hanleReviewSubmite = (e, room) => {
+    e.preventDefault();
+    const from = e.target;
+    const comment = from.comment.value;
+    const rooomRating = rating;
+    const reviewData = {
+      id: room?._id,
+      roomId: room?.roomId,
+      comment,
+      rooomRating,
+      userName: user?.displayName,
+      userPhoto: user?.photoURL,
+      timestamp: new Date().toLocaleString()
+    };
+    reviewRoom(reviewData);
   };
   if (isLoading) return <LoadingSpinner />;
   return (
@@ -224,7 +286,10 @@ const MyBookings = () => {
                     >
                       Update Date
                     </button>
-                    <button className="py-2 px-2 rounded-md bg-indigo-500 text-white font-medium">
+                    <button
+                      onClick={() => reviewModal(room)}
+                      className="py-2 px-2 rounded-md bg-indigo-500 text-white font-medium"
+                    >
                       review{" "}
                     </button>
                     <button
@@ -297,6 +362,66 @@ const MyBookings = () => {
               <button className="btn">Cancel</button>
             </form>
           </div>
+        </div>
+      </dialog>
+      {/* Review modal */}
+      <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
+          <h3 className="font-bold text-xl">Leave a Review</h3>
+          <div className="flex items-center gap-2 mt-4">
+            {user?.photoURL ? (
+              <img
+                className="w-10 h-10 object-cover rounded-full"
+                src={user?.photoURL}
+                alt="User imge"
+                referrerPolicy="no-referrer"
+              />
+            ) : (
+              <img
+                className="w-10 h-10 rounded-full border border-primary p-[2px]"
+                src={userIcon}
+                alt="Default User Icon"
+              />
+            )}
+            <h4 className="text-lg font-semibold">{user?.displayName}</h4>
+          </div>
+          <form onSubmit={(e) => hanleReviewSubmite(e, roomdtls)}>
+            <label className="block font-medium mt-4">Rating</label>
+            <StarRatingComponent
+              name="rating"
+              value={rating}
+              starCount={5}
+              onStarClick={onStarClick}
+              starColor="gold"
+              emptyStarColor="gray"
+              className="text-2xl"
+            />
+            <label className="block font-medium mt-2">Comment</label>
+            <textarea
+              id="comment"
+              placeholder="Write your comment here..."
+              className="textarea textarea-bordered w-full mt-2"
+              required
+            />
+
+            <div className="modal-action">
+              <div className="modal-action mt-4">
+                <button
+                  type="submit"
+                  className="btn bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-1 px-4 rounded-md"
+                >
+                  Give review
+                </button>
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={() => document.getElementById("my_modal_5").close()}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
       </dialog>
     </>

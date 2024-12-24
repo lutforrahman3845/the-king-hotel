@@ -33,7 +33,6 @@ const Rooms = () => {
   const handlePaginationButton = (value) => {
     setCurrentPage(value);
   };
-  console.log(sort)
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
   return (
     <div className="py-6 md:py-10 px-3">
