@@ -232,6 +232,7 @@ const MyBookings = () => {
       timestamp: new Date().toLocaleString()
     };
     reviewRoom(reviewData);
+    from.reset();
   };
   if (isLoading) return <LoadingSpinner />;
   return (
@@ -260,7 +261,7 @@ const MyBookings = () => {
               </tr>
             </thead>
             <tbody>
-              {bookingRooms.map((room, index) => (
+              {bookingRooms.slice().reverse().map((room, index) => (
                 <tr key={room._id} className="hover">
                   <th>{index + 1}</th>
                   <td className="flex items-center gap-2">
