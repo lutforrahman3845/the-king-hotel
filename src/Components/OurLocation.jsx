@@ -12,7 +12,6 @@ L.Icon.Default.mergeOptions({
   iconUrl: markerIcon,
   shadowUrl: markerShadow,
 });
-
 const OurLocation = () => {
   const position = [23.7425, 90.4071];
   return (
