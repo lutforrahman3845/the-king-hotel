@@ -25,7 +25,7 @@ const OurLocation = () => {
           center={position}
           zoom={13}
           scrollWheelZoom={false}
-          className="w-full h-full"
+          className="w-full h-full z-40"
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

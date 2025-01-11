@@ -10,9 +10,9 @@ const Root = () => {
   }, [location]);
   return (
     <>
-      <div className="min-h-screen flex flex-col  overflow-x-hidden">
+      <div className="min-h-screen flex flex-col container mx-auto">
         <Navbar></Navbar>
-        <main className="flex-grow">
+        <main className="flex-grow overflow-x-hidden">
           <Outlet></Outlet>
         </main>
         <Footer></Footer>

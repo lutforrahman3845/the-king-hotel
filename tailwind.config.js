@@ -9,6 +9,9 @@ export default {
       },
       fontFamily: {
         'cinzel': ["Cinzel", "serif"],
+      },
+      screens:{
+        '3xl':'1900px'
       }
       
     },
