@@ -42,6 +42,8 @@ Welcome to **The King Hotel**, a modern hotel booking platform designed to provi
 - **MongoDB**: NoSQL database for efficient data management.
 
 ---
+Live link: https://the-king-hotel.web.app/
+---
 
 ## Installation
 
@@ -68,11 +70,36 @@ Welcome to **The King Hotel**, a modern hotel booking platform designed to provi
    ```bash
    npm run dev
    ```
+6.Package Dependencies
+```
+ "dependencies": {
+    "@headlessui/react": "^2.2.0",
+    "@heroicons/react": "^2.2.0",
+    "@tanstack/react-query": "^5.62.8",
+    "axios": "^1.7.9",
+    "date-fns": "^4.1.0",
+    "firebase": "^11.1.0",
+    "leaflet": "^1.9.4",
+    "localforage": "^1.10.0",
+    "lottie-react": "^2.4.0",
+    "match-sorter": "^8.0.0",
+    "motion": "^11.15.0",
+    "react": "^19.0.0-rc.1",
+    "react-countup": "^6.5.3",
+    "react-datepicker": "^7.5.0",
+    "react-dom": "^19.0.0-rc.1",
+    "react-leaflet": "^5.0.0",
+    "react-router-dom": "^7.1.0",
+    "react-slick": "^0.30.3",
+    "react-star-rating-component": "^1.4.1",
+    "react-toastify": "^11.0.2",
+    "slick-carousel": "^1.8.1",
+    "sort-by": "^1.2.0",
+    "sweetalert2": "^11.15.3",
+    "swiper": "^11.1.15"
+  },
+```
 
-
----
-## server repositories
-- https://github.com/lutforrahman3845/the-king-hotel-server
 ---
 
 ## Folder Structure
@@ -90,6 +117,9 @@ Welcome to **The King Hotel**, a modern hotel booking platform designed to provi
 └── package.json         # Project dependencies
 ```
 
+---
+## server repositories
+- https://github.com/lutforrahman3845/the-king-hotel-server
 ---
 
 ## Contributing
