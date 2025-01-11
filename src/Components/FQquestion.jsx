@@ -1,6 +1,6 @@
 const FQquestion = () => {
   return (
-    <div className="py-8 md:py-14 lg:py-16  px-5 overflow-x-hidden">
+    <div className="pb-8 md:pb-14 lg:pb-16  px-5 overflow-x-hidden">
       <h1 className="text-xl  lg:text-2xl  xl:text-3xl  font-cinzel font-semibold">
         FAQs for The King Hotel , Matrix
       </h1>

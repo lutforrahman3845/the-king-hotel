@@ -19,7 +19,7 @@ const Reviews = () => {
   });
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
   return (
-    <div className="py-8 md:py-14 lg:py-16 xl:py-20 px-2 overflow-x-hidden">
+    <div className="py-8 md:py-14 lg:py-16  px-2 overflow-x-hidden">
       <h1 className="text-xl  lg:text-2xl  xl:text-3xl text-center font-cinzel font-semibold">
         Testimonial
       </h1>
@@ -44,12 +44,12 @@ const Reviews = () => {
             slidesPerView: 3,
           },
         }}
-        className="w-full h-72 my-5 mx-10"
+        className="w-full h-72 my-5 mx-10 mt-8"
       >
         {reviews.slice(0, 6).map((review) => (
           <SwiperSlide
             key={review._id}
-            className="border-2 border-indigo-400 p-4 rounded-lg"
+            className="border-2 border-indigo-400 p-4 rounded-lg "
           >
             {" "}
             <div>

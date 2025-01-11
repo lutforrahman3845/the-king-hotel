@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import About from "../Components/About";
 import Bannar from "../Components/Bannar";
-import ContactUs from "../Components/ContactUs";
 import FeaturedRooms from "../Components/FeaturedRooms";
 import FQquestion from "../Components/FQquestion";
 import HappyCoustomer from "../Components/HappyCoustomer";
@@ -27,9 +26,8 @@ const Home = () => {
       <HappyCoustomer></HappyCoustomer>
       <FeaturedRooms></FeaturedRooms>
       <Reviews></Reviews>
-      <OurLocation></OurLocation>
-      <ContactUs></ContactUs>
       <FQquestion></FQquestion>
+      <OurLocation></OurLocation>
       {/* Offer modal */}
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box relative">

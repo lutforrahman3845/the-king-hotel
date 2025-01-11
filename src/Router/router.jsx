@@ -10,6 +10,7 @@ import Rooms from "../Pages/Rooms";
 import PrivateRoute from "./PrivateRoute";
 import RoomDetails from "../Pages/RoomDetails";
 import MyBookings from "../Pages/MyBookings";
+import ContactUs from "../Components/ContactUs";
 
   const router = createBrowserRouter([
     {
@@ -32,6 +33,10 @@ import MyBookings from "../Pages/MyBookings";
         {
           path: "/rooms",
           element: <Rooms></Rooms>
+        },
+        {
+          path:"/contact",
+          element: <ContactUs></ContactUs>
         },
         {
           path:"/room_details/:id",

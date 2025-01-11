@@ -60,8 +60,8 @@ const Rooms = () => {
           className="border-2 border-indigo-600 p-3 rounded-md"
         >
           <option value="">Sort By Price</option>
-          <option value="dsc">Descending Order</option>
-          <option value="asc">Ascending Order</option>
+          <option value="dsc">High to low</option>
+          <option value="asc">Low ti high</option>
         </select>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6">
